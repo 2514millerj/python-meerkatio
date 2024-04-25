@@ -72,6 +72,8 @@ perf = get_model_performance(output)
 %sms "Cell completed!"
 ```
 
+![MeerkatIO Jupyter Notebook personal notification example alerting options](docs/jupyter_example.png)
+
 ## MeerkatIO CLI Tool
 Access all of the same communication methods from your command prompt to integrate with any workflow.
 
