@@ -18,8 +18,9 @@ setup(
     ''',
     author="MeerkatIO",
     description="Personal notification and debug tool for multi-tasking software developers",
-    long_description=open("documentation.md").read(),
+    long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    license=open("LICENSE").read()
-    # Add other metadata such as author, author_email, description, etc.
+    license=open("LICENSE").read(),
+    keywords=["notification", "alerting", "personal", "productivity", "big data"],
+    url="https://meerkatio.com"
 )
