@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='meerkatio',
-    version='1.13',
+    version='1.14',
     packages=find_packages(),
     package_data={'meerkat': ['ping_sounds/*.mp3']},
     include_package_data=True,
@@ -10,7 +10,8 @@ setup(
         "requests",
         "click",
         "typing_extensions==4.11.0",
-        "ipython"
+        "ipython",
+        "python-vlc"
     ],
     entry_points='''
         [console_scripts]

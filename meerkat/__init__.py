@@ -1,11 +1,11 @@
 import os
 import time
-import platform
-import pkg_resources
+import importlib.resources as resources
 from IPython.core.magic import Magics, magics_class, line_magic
 from IPython import get_ipython
+import vlc
 
-from meerkat.api import send_meerkat_notification, get_user_token
+from meerkat.api import send_meerkat_notification
 
 module_runtime = int(time.time()*1000)
 
@@ -17,22 +17,16 @@ if not os.environ.get("MEERKAT_TOKEN"):
         pass
 
 def _play_sound(file_name: str):
-    system = platform.system()
-    if system == 'Darwin':  # macOS
-        os.system(f'afplay "{file_name}"')
-    elif system == 'Linux':
-        os.system(f'aplay "{file_name}"')
-    elif system == 'Windows':
-        os.system(f'powershell -c "(New-Object Media.SoundPlayer \'{file_name}\').PlaySync();"')
-    else:
-        print('Unsupported operating system.')
+    p = vlc.MediaPlayer("file://" + file_name)
+    p.play()
+    time.sleep(2)
 
 #
 # Notification Functions
 #
 def ping():
-    sound_path = pkg_resources.resource_filename('meerkat', 'ping_sounds/default_ping.mp3')
-    _play_sound(sound_path)
+    sound_path = resources.files("meerkat") / "ping_sounds/default_ping.mp3"
+    _play_sound(str(sound_path))
 
 def email(token=None, message=""):
     if token == None:
