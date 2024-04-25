@@ -1,11 +1,15 @@
 import os
 import time
+import platform
 import importlib.resources as resources
 from IPython.core.magic import Magics, magics_class, line_magic
 from IPython import get_ipython
-import vlc
 
-from meerkat.api import send_meerkat_notification
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+from pygame import mixer
+
+from meerkat.api import send_meerkat_notification, get_user_token
 
 module_runtime = int(time.time()*1000)
 
@@ -17,8 +21,9 @@ if not os.environ.get("MEERKAT_TOKEN"):
         pass
 
 def _play_sound(file_name: str):
-    p = vlc.MediaPlayer("file://" + file_name)
-    p.play()
+    mixer.init()
+    mixer.music.load(file_name)
+    mixer.music.play()
     time.sleep(2)
 
 #
@@ -66,8 +71,8 @@ def slack(token=None, message=""):
 class MeerkatMagics(Magics):
     @line_magic
     def ping(self, line):
-        sound_path = pkg_resources.resource_filename('meerkat', 'ping_sounds/default_ping.mp3')
-        _play_sound(sound_path)
+        sound_path = resources.files("meerkat") / "ping_sounds/default_ping.mp3"
+        _play_sound(str(sound_path))
 
     @line_magic
     def email(self, line):
