@@ -1,0 +1,7 @@
+_static/
+_templates/
+dist/
+build/
+*.egg-info/
+
+meerkat/__pycache__/
