@@ -19,9 +19,9 @@ if not os.environ.get("MEERKAT_TOKEN"):
 def _play_sound(file_name: str):
     system = platform.system()
     if system == 'Darwin':  # macOS
-        os.system(f'afplay {file_name}')
+        os.system(f'afplay "{file_name}"')
     elif system == 'Linux':
-        os.system(f'aplay {file_name}')
+        os.system(f'aplay "{file_name}"')
     elif system == 'Windows':
         os.system(f'powershell -c "(New-Object Media.SoundPlayer \'{file_name}\').PlaySync();"')
     else:

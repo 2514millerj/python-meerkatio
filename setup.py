@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='meerkatio',
-    version='1.12',
+    version='1.13',
     packages=find_packages(),
     package_data={'meerkat': ['ping_sounds/*.mp3']},
     include_package_data=True,
