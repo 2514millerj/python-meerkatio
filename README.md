@@ -1,5 +1,7 @@
 # MeerkatIO Python Package
 
+[![Downloads](https://static.pepy.tech/badge/meerkatio)](https://pepy.tech/project/meerkatio)
+
 ## Introduction
 
 [MeerkatIO](https://www.meerkatio.com/) is the personal notification platform for software developers and data scientists. Stop watching your code run and reclaim time in your day! Use this package to trigger personal notifications when your long running build or test processes finish, or to log output for personal debugging to an external communication channel.

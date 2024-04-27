@@ -9,7 +9,7 @@ from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from pygame import mixer
 
-from meerkat.api import send_meerkat_notification, get_user_token
+from meerkat.api import send_meerkat_notification
 
 module_runtime = int(time.time()*1000)
 
@@ -33,7 +33,7 @@ def ping():
     sound_path = resources.files("meerkat") / "ping_sounds/default_ping.mp3"
     _play_sound(str(sound_path))
 
-def email(token=None, message=""):
+def email(message="", token=None):
     if token == None:
         token = os.environ.get("MEERKAT_TOKEN")
 
@@ -43,7 +43,7 @@ def email(token=None, message=""):
     
     return send_meerkat_notification("email", token, message)
 
-def sms(token=None, message=""):
+def sms(message="", token=None):
     if token == None:
         token = os.environ.get("MEERKAT_TOKEN")
 
@@ -53,7 +53,7 @@ def sms(token=None, message=""):
     
     return send_meerkat_notification("sms", token, message)
 
-def slack(token=None, message=""):
+def slack(message="", token=None):
     if token == None:
         token = os.environ.get("MEERKAT_TOKEN")
 
