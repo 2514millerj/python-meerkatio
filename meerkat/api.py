@@ -22,3 +22,13 @@ def get_user_token(email, password):
         return json.loads(response.text).get("token")
     else:
         return None
+
+def register_user(email, password):
+    response = requests.post(MEERKAT_BASE_URL + "api/user/register", json={
+        "email": email,
+        "password": password
+    })
+    if response.status_code == 201:
+        return json.loads(response.text).get("token")
+    else:
+        return None

@@ -1,6 +1,5 @@
 import os
 import time
-import platform
 import importlib.resources as resources
 from IPython.core.magic import Magics, magics_class, line_magic
 from IPython import get_ipython

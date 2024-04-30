@@ -4,7 +4,7 @@
 
 ## Introduction
 
-[MeerkatIO](https://www.meerkatio.com/) is the personal notification platform for software developers and data scientists. Stop watching your code run and reclaim time in your day! Use this package to trigger personal notifications when your long running build or test processes finish, or to log output for personal debugging to an external communication channel.
+[MeerkatIO](https://www.meerkatio.com/) is the personal notification platform for software engineers and data scientists. Stop watching your code run and reclaim time in your day! Use this package to trigger personal notifications when your long running build or test processes finish, or to log output for personal debugging to an external communication channel.
 
 Get started with just 2 lines of code!
 
@@ -15,22 +15,29 @@ $ pip3 install meerkatio
 ```
 
 ## Authenticating
+No account or authentication is required to use the Ping feature of MeerkatIO, however all other communication channels can be enabled easily with a [MeerkatIO Account](http://meerkatio.com/register) or through the MeerkatIO Command Line Interface tool.
 
-After creating an account at [MeerkatIO](http://meerkatio.com/register) you will be given a unique token which can be used to authenticate with the SDK. Your Meerkat token can either be set in your environment with the `MEERKAT_TOKEN` environmental variable or in the `~/.meerkat` file in your user’s home directory. No authentication is required to use the free Ping feature of MeerkatIO.
+### CLI Account Registration
+This package provides a convenient way to get up and running. The `register` command will prompt you for a username and password to start your free account, and on success your environment will be set up for you so you can skip the Authentication Token Setup steps.
 
-### Log In from the command line
+```bash
+$ meerkat register
+```
+
+### Authentication Token Setup
+Using your username and password from [MeerkatIO](https://meerkatio.com):
 
 ```bash
 $ meerkat login
 ```
 
-### Or manually set the MeerkatIO token
+Or manually set the MeerkatIO token with one of the following examples:
 
 ```bash
-# Environmental Variable
+# Option 1: Environmental Variable
 $ export MEERKAT_TOKEN=token
 
-# Cache File
+# Option 2: Cache File
 $ echo "token" > ~/.meerkat
 ```
 
