@@ -29,7 +29,7 @@ def _play_sound(file_name: str):
 # Notification Functions
 #
 def ping():
-    sound_path = resources.files("meerkat") / "ping_sounds/default_ping.mp3"
+    sound_path = resources.files("meerkat") / "ping_sounds/default_ping.wav"
     _play_sound(str(sound_path))
 
 def email(message="", token=None):
@@ -70,7 +70,7 @@ def slack(message="", token=None):
 class MeerkatMagics(Magics):
     @line_magic
     def ping(self, line):
-        sound_path = resources.files("meerkat") / "ping_sounds/default_ping.mp3"
+        sound_path = resources.files("meerkat") / "ping_sounds/default_ping.wav"
         _play_sound(str(sound_path))
 
     @line_magic
