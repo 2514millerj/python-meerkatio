@@ -4,9 +4,18 @@
 
 ## Introduction
 
-[MeerkatIO](https://www.meerkatio.com/) is the personal notification platform for software engineers and data scientists. Stop watching your code run and reclaim time in your day! Use this package to trigger personal notifications when your long running build or test processes finish, or to log output for personal debugging to an external communication channel.
+[MeerkatIO](https://www.meerkatio.com/) is the personal notification platform for software engineers and data scientists that allows you to use the notification channels that fit your workflow. This one package immediately opens the door to any notification method you need to save time in your day, integrating with all of the built in tools already at your fingertips.
 
 Get started with just 2 lines of code!
+
+## Available Notification Channels
+
+The MeerkatIO Python package supports the following notification channels:
+- Ping
+- System
+- Slack Direct Message
+- SMS
+- Email
 
 ## Installation
 
@@ -15,7 +24,7 @@ $ pip3 install meerkatio
 ```
 
 ## Authenticating
-No account or authentication is required to use the Ping feature of MeerkatIO, however all other communication channels can be enabled easily with a [MeerkatIO Account](http://meerkatio.com/register) or through the MeerkatIO Command Line Interface tool.
+No account or authentication is required to use the Ping or System notifications, and all other communication channels can be easily enabled with a [MeerkatIO Account](http://meerkatio.com/register) or through the MeerkatIO Command Line Interface tool.
 
 ### CLI Account Registration
 This package provides a convenient way to get up and running. The `register` command will prompt you for a username and password to start your free account, and on success your environment will be set up for you so you can skip the Authentication Token Setup steps.

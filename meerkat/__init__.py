@@ -1,5 +1,6 @@
 import os
 import time
+import platform
 import importlib.resources as resources
 from IPython.core.magic import Magics, magics_class, line_magic
 from IPython import get_ipython
@@ -31,6 +32,30 @@ def _play_sound(file_name: str):
 def ping():
     sound_path = resources.files("meerkat") / "ping_sounds/default_ping.wav"
     _play_sound(str(sound_path))
+
+def system(message=""):
+    title = "MeerkatIO Alert"
+    sound_path = resources.files("meerkat") / "ping_sounds/default_ping.wav"
+
+    if platform.system().lower() == "darwin":
+        import subprocess
+
+        script = f'display notification "{message}" with title "{title}"'
+        script += f' sound name "{str(sound_path)}"'
+
+        command = ['osascript', '-e', script]
+        subprocess.Popen(command, shell=False)
+    elif platform.system().lower() == "windows" or platform.system().lower() == "linux":
+        from plyer import notification
+
+        notification.notify(
+            title=title,
+            message=message,
+            app_name="MeerkatIO",
+            timeout=10
+        )
+    else:
+        print("Platform not supported for system notifications!")
 
 def email(message="", token=None):
     if token == None:
@@ -72,6 +97,10 @@ class MeerkatMagics(Magics):
     def ping(self, line):
         sound_path = resources.files("meerkat") / "ping_sounds/default_ping.wav"
         _play_sound(str(sound_path))
+
+    @line_magic
+    def system(self, line):
+        system(line)
 
     @line_magic
     def email(self, line):

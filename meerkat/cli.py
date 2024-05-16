@@ -1,7 +1,7 @@
 import click
 import os
 
-from meerkat import email as send_email, ping as send_ping, sms as send_sms, slack as send_slack
+from meerkat import email as send_email, ping as send_ping, sms as send_sms, slack as send_slack, system as send_system
 from meerkat.api import get_user_token, register_user
 
 @click.group()
@@ -12,6 +12,12 @@ def meerkat():
 def ping():
     """Trigger ping sound to play from your local machine"""
     send_ping()
+
+@meerkat.command()
+@click.argument('message', type=str)
+def system(message):
+    """Send a message to the System Tray with MESSAGE content"""
+    send_system(message=message)
 
 @meerkat.command()
 @click.argument('message', type=str)
