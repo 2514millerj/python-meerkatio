@@ -14,6 +14,8 @@ The MeerkatIO Python package supports the following notification channels:
 - Ping
 - System
 - Slack Direct Message
+- Microsoft Teams
+- Google Chat
 - SMS
 - Email
 

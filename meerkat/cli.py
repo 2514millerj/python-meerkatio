@@ -1,7 +1,15 @@
 import click
 import os
 
-from meerkat import email as send_email, ping as send_ping, sms as send_sms, slack as send_slack, system as send_system
+from meerkat import (
+    email as send_email, 
+    ping as send_ping, 
+    sms as send_sms, 
+    slack as send_slack, 
+    system as send_system, 
+    teams as send_teams, 
+    google_chat as send_google_chat
+)
 from meerkat.api import get_user_token, register_user
 
 @click.group()
@@ -34,8 +42,20 @@ def sms(message):
 @meerkat.command()
 @click.argument('message', type=str)
 def slack(message):
-    """Send a Slack direct message to your MeerkatIO email address with MESSAGE content"""
+    """Send a Slack direct message to yourself with MESSAGE content"""
     send_slack(message=message)
+
+@meerkat.command()
+@click.argument('message', type=str)
+def teams(message):
+    """Send a teams direct message to yourself with MESSAGE content"""
+    send_teams(message=message)
+
+@meerkat.command()
+@click.argument('message', type=str)
+def google_chat(message):
+    """Send a google_chat direct message to yourself with MESSAGE content"""
+    send_google_chat(message=message)
 
 @meerkat.command()
 def login():

@@ -87,6 +87,26 @@ def slack(message="", token=None):
     
     return send_meerkat_notification("slack", token, message)
 
+def teams(message="", token=None):
+    if token == None:
+        token = os.environ.get("MEERKAT_TOKEN")
+
+    if not token:
+        print("No MeerkatIO token found in the environment. Please login using `meerkat login` or go to https://meerkatio.com to set up your account to enable this feature.")
+        return
+    
+    return send_meerkat_notification("teams", token, message)
+
+def google_chat(message="", token=None):
+    if token == None:
+        token = os.environ.get("MEERKAT_TOKEN")
+
+    if not token:
+        print("No MeerkatIO token found in the environment. Please login using `meerkat login` or go to https://meerkatio.com to set up your account to enable this feature.")
+        return
+    
+    return send_meerkat_notification("google_chat", token, message)
+
 #
 # iPython Extension
 #
@@ -113,6 +133,14 @@ class MeerkatMagics(Magics):
     @line_magic
     def slack(self, line):
         slack(line)
+
+    @line_magic
+    def teams(self, line):
+        teams(line)
+
+    @line_magic
+    def google_chat(self, line):
+        google_chat(line)
 
 try:
     # Register the magics with the notebook
